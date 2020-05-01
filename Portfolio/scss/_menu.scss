@@ -1,0 +1,118 @@
+.menuButton{
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    @include easeOut;
+
+    .buttonLine{
+        height: 3px;
+        width: 28px;
+        margin: 0 0 5px 0;
+        background: white;
+        @include easeOut;
+    }
+
+    &.close{
+        transform: rotate(180deg);
+
+        .buttonLine{
+            &:nth-child(1){
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            &:nth-child(2){
+                opacity: 0;
+            }
+            &:nth-child(3){
+                transform: rotate(-45deg) translate(7px, -5px);
+            }
+        }
+    }
+}
+
+.menu{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    visibility: hidden;
+
+    &.show{
+        visibility: visible;
+    }
+    &Branding, &Nav{
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        float: left;
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+        justify-content: center;
+    }
+    &Nav{
+        opacity: 90%;
+        margin: 0;
+        padding: 0;
+        background: darken($primaryColor, 5);
+        list-style: none;
+        transform: translate3d(100%, -100%, 0);
+        @include easeOut;
+
+        &.show{
+            transform: translate3d(0,0,0);
+        }
+    }
+
+    &Branding{
+        background: rgba($primaryColor, 0.9);
+        @include easeOut;
+        transform: translate3d(-100%, 100%, 0);
+
+        &.show{
+            transform: translate3d(0, 0, 0);
+        }
+        .portrait{
+            width: 250px;
+            height: 250px;
+            background: $portrait;
+            border-radius: 50%;
+            border: solid 5px $secondaryColor;
+        }
+    }
+
+    .navItem{
+        transform: translate3d(600px, 0, 0);
+        @include easeOut;
+
+        &.show{
+            transform: translate3d(0, 0, 0);
+        }
+
+        &.current > a{
+            color: $secondaryColor;
+
+        }
+    }
+
+    .navLink{
+        display: inline-block;
+        position: relative;
+        font-size: 30px;
+        padding: 10px;
+        font-weight: 300;
+        color: white;
+        text-decoration: none;
+        @include easeOut;
+
+        &:hover{
+            color: $secondaryColor;
+        }
+    } 
+}
+
+@for $i from 1 through 4 {
+    .navItem:nth-child(#{$i}){
+        transition-delay: $i*0.1s;
+    }
+}
