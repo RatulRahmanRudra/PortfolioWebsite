@@ -10,7 +10,7 @@
         height: 3px;
         width: 28px;
         margin: 0 0 5px 0;
-        background: white;
+        background: setTextColor($primaryColor);
         @include easeOut;
     }
 
@@ -101,7 +101,7 @@
         font-size: 30px;
         padding: 10px;
         font-weight: 300;
-        color: white;
+        color: setTextColor($primaryColor);
         text-decoration: none;
         @include easeOut;
 

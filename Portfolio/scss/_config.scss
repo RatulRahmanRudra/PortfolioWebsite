@@ -1,4 +1,4 @@
-$primaryColor: #444;
+$primaryColor: rgba(81, 85, 88, 0.712);// white;
 $secondaryColor:rgb(68, 194, 216);
 $showHomeImage: true;
 $homeImage: url(../img/Background.jpg);
@@ -25,6 +25,16 @@ $portrait: url(../img/portrait.jpg);
                 background: rgba($primaryColor,$backgroundOpacity);
             }
         }
+    }
+}
+
+
+@function setTextColor($color){
+    @if(lightness($color)>40){
+        @return black;
+    }
+    @else{
+        @return white;
     }
 }
 
